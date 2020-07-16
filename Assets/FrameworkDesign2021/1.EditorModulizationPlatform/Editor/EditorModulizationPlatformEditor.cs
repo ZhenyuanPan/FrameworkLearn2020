@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using System.Reflection;
+using FrameworkDesign2021.ServiceLocator.Default;
+
 namespace FrameworkDesign2021
 {
     public class EditorModulizationPlatformEditor : EditorWindow
@@ -24,9 +26,10 @@ namespace FrameworkDesign2021
             var editorPlatform = GetWindow<EditorModulizationPlatformEditor>();
             //规定对话框的大小位置
             editorPlatform.position = new Rect(Screen.width/2,Screen.height*2/3,600,500);
-            //组装 Contariner
-            var cache = new EditorPlatformModuleCache();
-            var factory = new EditorPlatformModuleFactory();
+            //组装 Contariner 这地方做了修改
+            var moduleType = typeof(IEditorPlatformModule);
+            var cache = new DefaultModuleCache();
+            var factory = new AssemblyModuleFactory(moduleType.Assembly,moduleType);
 
             editorPlatform.mModuleContainer = new ModuleContainer(cache,factory);
 

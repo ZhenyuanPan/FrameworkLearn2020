@@ -44,14 +44,15 @@ namespace FrameworkDesign2021
         public IEnumerable<T> GetModules<T>() where T : class
         {
             var moduleType = typeof(T);
-            var modules = mCache.GetModulesByType(moduleType);
+            var modules = mCache.GetModulesByType(moduleType) as IEnumerable<object>;
             if (modules == null)
             {
-                modules = mFactory.CreateModulesByType(moduleType);
+                modules = mFactory.CreateModulesByType(moduleType) as IEnumerable<object>;
                 mCache.AddModulesByType(moduleType,modules);
             }
             //这步是从object => T 是逆变。但是IEnumerable<out t> out修饰参数 只支持协变
-            return modules as IEnumerable<T>;
+            //return modules as IEnumerable<T>;
+            return modules.Select(m => m as T);//改进部分
         }
 
         public IEnumerable<object> GetModules(string name)

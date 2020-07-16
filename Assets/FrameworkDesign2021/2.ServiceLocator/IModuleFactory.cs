@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrameworkDesign2021.ServiceLocator
 {
-    interface IModuleFactory
+    public interface IModuleFactory
     {
         object CreateModuleByName(string name);
         object CreateMoudleType(Type type);

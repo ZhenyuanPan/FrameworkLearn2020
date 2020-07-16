@@ -63,7 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\EditorPlatform.cs" />
+    <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\EditorModulizationPlatformEditor.cs" />
+    <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\EditorPlatformModuleCache.cs" />
+    <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\EditorPlatformModuleFactory.cs" />
     <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\IEditorPlatformModule.cs" />
     <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\TestModule.cs" />
     <Compile Include="Assets\FrameworkDesign2021\2.ServiceLocator\Editor\ModuleContainerModule.cs" />

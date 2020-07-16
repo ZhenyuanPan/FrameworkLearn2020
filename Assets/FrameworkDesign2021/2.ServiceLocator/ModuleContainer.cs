@@ -6,7 +6,7 @@ using FrameworkDesign2021.ServiceLocator;
 using System.Reflection;
 namespace FrameworkDesign2021 
 {
-    class ModuleContainer 
+    public class ModuleContainer 
     {
         private IModuleCache mCache;
         private IModuleFactory mFactory;
@@ -50,6 +50,7 @@ namespace FrameworkDesign2021
                 modules = mFactory.CreateModulesByType(moduleType);
                 mCache.AddModulesByType(moduleType,modules);
             }
+            //这步是从object => T 是逆变。但是IEnumerable<out t> out修饰参数 只支持协变
             return modules as IEnumerable<T>;
         }
 

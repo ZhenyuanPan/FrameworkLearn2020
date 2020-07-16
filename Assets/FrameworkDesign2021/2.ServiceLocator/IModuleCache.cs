@@ -13,7 +13,7 @@ namespace FrameworkDesign2021.ServiceLocator
         IEnumerable<object> GetModulesByType(Type type);
         void AddModuleByName(string name,object module);
         void AddModuleByType(Type type,object module);
-        void AddModulesByName(string name,IEnumerable<object> module);
+        void AddModulesByName(string name,IEnumerable<object> modules);
         void AddModulesByType(Type type,IEnumerable<object> modules);
     }
 

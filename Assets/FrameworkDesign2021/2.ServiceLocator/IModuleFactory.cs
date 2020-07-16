@@ -10,7 +10,9 @@ namespace FrameworkDesign2021.ServiceLocator
     {
         object CreateModuleByName(string name);
         object CreateMoudleType(Type type);
-        IEnumerable<object> CreateModulesByName(string name);
-        IEnumerable<object> CreateModulesByType(Type type);
+        //新增修改
+        object CreateModulesByName(string name);
+        //新增修改
+        object CreateModulesByType(Type type);
     }
 }

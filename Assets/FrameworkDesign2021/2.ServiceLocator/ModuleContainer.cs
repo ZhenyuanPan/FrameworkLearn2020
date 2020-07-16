@@ -41,11 +41,11 @@ namespace FrameworkDesign2021
             return module;
         }
 
-        public IEnumerable<T> GetModules<T>() 
+        public IEnumerable<T> GetModules<T>() where T : class
         {
             var moduleType = typeof(T);
             var modules = mCache.GetModulesByType(moduleType);
-            if (modules == null || !modules.Any())
+            if (modules == null)
             {
                 modules = mFactory.CreateModulesByType(moduleType);
                 mCache.AddModulesByType(moduleType,modules);
@@ -57,10 +57,12 @@ namespace FrameworkDesign2021
         public IEnumerable<object> GetModules(string name)
         {
             var moduleName = name;
-            var modules = mCache.GetModulesByName(name);
+            //新增修改
+            var modules = mCache.GetModuleByName(moduleName) as IEnumerable<object>;
             if (modules == null || !modules.Any())
             {
-                modules = mFactory.CreateModulesByName(moduleName);
+                //新增修改
+                modules = mFactory.CreateModulesByName(moduleName) as IEnumerable<object>;
                 mCache.AddModuleByName(moduleName,modules);
             }
             return modules;

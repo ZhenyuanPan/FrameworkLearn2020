@@ -8,7 +8,9 @@ namespace FrameworkDesign2021
 {
     public class EditorPlatformModuleCache : IModuleCache
     {
-        private IEnumerable<object> mModules;
+        //新增
+        private IEnumerable<IEditorPlatformModule> mModules;
+
         public void AddModuleByName(string name, object module)
         {
             throw new NotImplementedException();
@@ -19,16 +21,12 @@ namespace FrameworkDesign2021
             throw new NotImplementedException();
         }
 
-        public void AddModulesByName(string name, IEnumerable<object> modules)
+        public void AddModulesByName(string name, object modules)
         {
-            mModules = modules;
+            throw new NotImplementedException();
         }
 
-        public void AddModulesByType(Type type, IEnumerable<object> modules)
-        {
-            mModules = modules;
-        }
-
+        
         public object GetModuleByName(string name)
         {
             throw new NotImplementedException();
@@ -39,14 +37,20 @@ namespace FrameworkDesign2021
             throw new NotImplementedException();
         }
 
-        public IEnumerable<object> GetModulesByName(string name)
+        public object GetModulesByName(string name)
         {
-            return mModules;
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<object> GetModulesByType(Type type)
+        public object GetModulesByType(Type type)
         {
             return mModules;
         }
+        //新增
+        public void AddModulesByType(Type type, object modules)
+        {
+            mModules = modules as IEnumerable<IEditorPlatformModule>;
+        }
+
     }
 }

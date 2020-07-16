@@ -28,9 +28,9 @@ namespace FrameworkDesign2021
         }
        
 
-        private IEnumerable<object> CreateAllModules() 
+        private object CreateAllModules() 
         {
-            return mModuleTypes.Select(t => t.GetConstructors().First().Invoke(null));
+            return mModuleTypes.Select(t => t.GetConstructors().First().Invoke(null)).Cast<IEditorPlatformModule>();
         }
 
         #region 不实现了 用不到
@@ -46,11 +46,11 @@ namespace FrameworkDesign2021
         #endregion
 
 
-        public IEnumerable<object> CreateModulesByType(Type type)
+        public object CreateModulesByType(Type type)
         {
             return CreateAllModules();
         }
-        public IEnumerable<object> CreateModulesByName(string name)
+        public object CreateModulesByName(string name)
         {
             return CreateAllModules();
         }

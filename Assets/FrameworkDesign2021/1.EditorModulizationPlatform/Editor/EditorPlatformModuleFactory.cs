@@ -25,7 +25,6 @@ namespace FrameworkDesign2021
                 .GetTypes()
                 .Where(t => typeof(IEditorPlatformModule).IsAssignableFrom(t) && !t.IsAbstract)
                 .ToList();
-            var b = mModuleTypes;
         }
        
 

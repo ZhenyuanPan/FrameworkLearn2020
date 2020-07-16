@@ -21,10 +21,11 @@ namespace FrameworkDesign2021
         {
             mModuleTypes = AppDomain.CurrentDomain.GetAssemblies()
                 //看看解决方案资源管理器就明白了了
-                .Single(a => a.FullName.StartsWith("Assembley-CSharp-Editor"))
+                .Single(a => a.FullName.StartsWith("Assembly-CSharp-Editor"))
                 .GetTypes()
                 .Where(t => typeof(IEditorPlatformModule).IsAssignableFrom(t) && !t.IsAbstract)
                 .ToList();
+            var b = mModuleTypes;
         }
        
 

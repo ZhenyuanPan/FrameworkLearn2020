@@ -2,38 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using FrameworkDesign2021.ServiceLocator;
+using System.Reflection;
 namespace FrameworkDesign2021 
 {
-    public class ModuleContainer <T>
+    class ModuleContainer 
     {
-        private List<T> mModules = new List<T>();
+        private IModuleCache mCache;
+        private IModuleFactory mFactory;
 
-        public List<T> Modules
+        public ModuleContainer(IModuleCache cache,IModuleFactory factory) 
         {
-            get { return mModules; }
+            mCache = cache;
+            mFactory = factory;
         }
-        public void Scan(string assemblyName)
-        {
 
-            // 1.获取当前项目中所有的 assembly (可以理解为 代码编译好的 dll)
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
-            // 2.获取编辑器环境(dll)
-            var editorAssembly = assemblies.First(assembly => assembly.FullName.StartsWith(assemblyName));
-            // 3.获取 IEditorPlatformModule 类型
+        public T GetModule<T>() where T : class 
+        {
             var moduleType = typeof(T);
-
-            mModules = editorAssembly
-                // 获取所有的编辑器环境中的类型 
-                .GetTypes()
-                // 过滤掉抽象类型（接口/抽象类)、和未实现 IEditorPlatformModule 的类型
-                .Where(type => moduleType.IsAssignableFrom(type) && !type.IsAbstract)
-                // 获取类型的构造创建实例
-                .Select(type => type.GetConstructors().First().Invoke(null))
-                // 强制转换成 IEditorPlatformModule 类型
-                .Cast<T>()
-                // 转换成 List<IEditorPlatformModule>
-                .ToList();
+            var module = mCache.GetModuleByType(moduleType);
+            if (module == null)
+            {
+                module = mFactory.CreateMoudleType(moduleType);
+                mCache.AddModuleByType(moduleType,module);
+            }
+            return module as T;
         }
+
+        public object GetModule(string name) 
+        {
+            var moduleName = name;
+            var module = mCache.GetModuleByName(moduleName);
+            if (module == null)
+            {
+                module = mFactory.CreateModuleByName(moduleName);
+                mCache.AddModuleByName(moduleName,module);
+            }
+            return module;
+        }
+
+        public IEnumerable<T> GetModules<T>() 
+        {
+            var moduleType = typeof(T);
+            var modules = mCache.GetModulesByType(moduleType);
+            if (modules == null || !modules.Any())
+            {
+                modules = mFactory.CreateModulesByType(moduleType);
+                mCache.AddModulesByType(moduleType,modules);
+            }
+            return modules as IEnumerable<T>;
+        }
+
+        public IEnumerable<object> GetModules(string name)
+        {
+            var moduleName = name;
+            var modules = mCache.GetModulesByName(name);
+            if (modules == null || !modules.Any())
+            {
+                modules = mFactory.CreateModulesByName(moduleName);
+                mCache.AddModuleByName(moduleName,modules);
+            }
+            return modules;
+        }
+
+
+
     }
 }

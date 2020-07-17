@@ -65,8 +65,8 @@
   <ItemGroup>
     <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\EditorModulizationPlatformEditor.cs" />
     <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\IEditorPlatformModule.cs" />
+    <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\ModuleContainerModule.cs" />
     <Compile Include="Assets\FrameworkDesign2021\1.EditorModulizationPlatform\Editor\TestModule.cs" />
-    <Compile Include="Assets\FrameworkDesign2021\2.ServiceLocator\Editor\ModuleContainerModule.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity2019_3_f1/2019.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

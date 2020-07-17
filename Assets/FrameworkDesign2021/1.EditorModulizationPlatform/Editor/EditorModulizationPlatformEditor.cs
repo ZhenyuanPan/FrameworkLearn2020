@@ -38,8 +38,9 @@ namespace FrameworkDesign2021
 
         private void OnGUI()
         {
+            //改动部分
             //获取全部模块
-            var modules = mModuleContainer.GetModules<IEditorPlatformModule>();
+            var modules = mModuleContainer.GetAllModules<IEditorPlatformModule>();
 
             //渲染
             foreach (var editorPlatformModule in modules)

@@ -22,19 +22,6 @@ namespace FrameworkDesign2021.ServiceLocator.Default
             }
         }
 
-        public void AddModules(ModuleSearchKeys keys, object modules)
-        {
-            var moduleCollection = (IEnumerable<object>)modules;
-            if (mModulesByType.ContainsKey(keys.Type))
-            {
-                mModulesByType[keys.Type].AddRange(moduleCollection);
-            }
-            else
-            {
-                mModulesByType.Add(keys.Type,moduleCollection.ToList());
-            }
-        }
-
         public object GetModule(ModuleSearchKeys keys)
         {
             List<object> output = null;
@@ -45,17 +32,11 @@ namespace FrameworkDesign2021.ServiceLocator.Default
             return null;
         }
 
-     
-        public object GetModules(ModuleSearchKeys keys)
+        //改动
+        public object GetAllModules()
         {
-            List<object> output = null;
-
-            if (mModulesByType.TryGetValue(keys.Type, out output))
-            {
-
-            }
-
-            return output;
+            //就是把list<object>拆分成object了
+            return mModulesByType.Values.SelectMany(list => list);
         }
 
     }

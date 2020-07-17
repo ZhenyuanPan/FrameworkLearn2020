@@ -9,6 +9,6 @@ namespace FrameworkDesign2021.ServiceLocator
     public interface IModuleFactory
     {
         object CreateModule(ModuleSearchKeys keys);
-        object CreateModules(ModuleSearchKeys keys);
+        object CreateAllModules();
     }
 }

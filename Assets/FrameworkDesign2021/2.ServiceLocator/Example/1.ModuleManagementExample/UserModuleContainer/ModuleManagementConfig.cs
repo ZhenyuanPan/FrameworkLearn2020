@@ -34,15 +34,12 @@ namespace FrameworkDesign2021.ServiceLocator.ModuleManagementExample
             //(resManager as ResManager).PoolManager = poolManager;
 
             //初始化模块
-            //foreach (var module in Container.GetModules<IModule>())
-            //{
-            //    module.InitModule();
-            //}
-            poolManager.InitModule();
-            fsm.InitModule();
-            resManager.InitModule();
-            eventManager.InitModule();
-            uiManager.InitModule();
+            var modules = Container.GetAllModules<IModule>();
+            //改动
+            foreach (var module in modules)
+            {
+                module.InitModule();
+            }
 
         }
 

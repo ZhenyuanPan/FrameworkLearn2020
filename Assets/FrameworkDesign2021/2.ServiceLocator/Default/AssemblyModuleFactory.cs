@@ -58,7 +58,7 @@ namespace FrameworkDesign2021.ServiceLocator.Default
             return null;
         }
 
-        public object CreateModules(ModuleSearchKeys keys)
+        public object CreateAllModules()
         {
             return mConcreteTypeCache.Select(t => t.GetConstructors().First().Invoke(null));
         }

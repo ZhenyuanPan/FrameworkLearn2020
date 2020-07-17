@@ -45,15 +45,18 @@ namespace FrameworkDesign2021
         //    return module;
         //}
         #endregion
-        public IEnumerable<T> GetModules<T>() where T : class
+        public IEnumerable<T> GetAllModules<T>() where T : class
         {
             //申请对象
             var moduleSearchKeys = ModuleSearchKeys.Allocate<T>();
-            var modules = mCache.GetModules(moduleSearchKeys) as IEnumerable<object>;
-            if (modules == null)
+            var modules = mCache.GetAllModules() as IEnumerable<object>;
+            if (modules == null || !modules.Any())
             {
-                modules = mFactory.CreateModules(moduleSearchKeys) as IEnumerable<object>;
-                mCache.AddModules(moduleSearchKeys, modules);
+                modules = mFactory.CreateAllModules() as IEnumerable<object>;
+                foreach (var module in modules)
+                {
+                    mCache.AddModule(moduleSearchKeys,module);
+                }
             }
             //回收对象
             moduleSearchKeys.Release2Pool();

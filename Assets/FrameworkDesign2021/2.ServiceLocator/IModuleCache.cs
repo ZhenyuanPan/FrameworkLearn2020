@@ -8,9 +8,9 @@ namespace FrameworkDesign2021.ServiceLocator
     public interface IModuleCache
     {
         object GetModule(ModuleSearchKeys keys);
-        object GetModules(ModuleSearchKeys keys);
+        //改动
+        object GetAllModules();
         void AddModule(ModuleSearchKeys keys, object module);
-        void AddModules(ModuleSearchKeys keys, object modules);
     }
 
 }

@@ -7,16 +7,10 @@ namespace FrameworkDesign2021.ServiceLocator
 {
     public interface IModuleCache
     {
-        object GetModuleByName(string name);
-        object GetModuleByType(Type type);
-        //新增修改
-        object GetModulesByName(string name);
-        //新增修改
-        object GetModulesByType(Type type);
-        void AddModuleByName(string name,object module);
-        void AddModuleByType(Type type,object module);
-        void AddModulesByName(string name,object modules);
-        void AddModulesByType(Type type,object modules);
+        object GetModule(ModuleSearchKeys keys);
+        object GetModules(ModuleSearchKeys keys);
+        void AddModule(ModuleSearchKeys keys, object module);
+        void AddModules(ModuleSearchKeys keys, object modules);
     }
 
 }

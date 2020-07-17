@@ -8,11 +8,7 @@ namespace FrameworkDesign2021.ServiceLocator
 {
     public interface IModuleFactory
     {
-        object CreateModuleByName(string name);
-        object CreateMoudleType(Type type);
-        //新增修改
-        object CreateModulesByName(string name);
-        //新增修改
-        object CreateModulesByType(Type type);
+        object CreateModule(ModuleSearchKeys keys);
+        object CreateModules(ModuleSearchKeys keys);
     }
 }

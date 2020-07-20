@@ -34,9 +34,6 @@ namespace FrameworkDesign2021.ServiceLocator.LayerdArchitectureExample
             //主动创建对象
             var logicController = Architecture.LogicLayer.GetModule<ILoginController>();
             var userInputManager = Architecture.LogicLayer.GetModule<IUserInputManager>();
-
-            Debug.Log(logicController);
-            Debug.Log(userInputManager);
         }
 
     }

@@ -12,7 +12,7 @@ namespace FrameworkDesign2021.ServiceLocator.LayerdArchitectureExample
         void Login();
     }
 
-    public class LoginController : ILogicController
+    public class LoginController : ILoginController
     {
         public void Login() 
         {

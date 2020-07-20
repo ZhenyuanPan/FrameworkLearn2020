@@ -16,7 +16,6 @@ namespace FrameworkDesign2021.ServiceLocator.LayerdArchitectureExample
 
         public AbstractModuleLayer() 
         {
-            Debug.Log("子类调用了父类的构造函数");
             mContainer = new ModuleContainer(new DefaultModuleCache(),mFactory);
         }
 

@@ -34,6 +34,13 @@ namespace FrameworkDesign2021.ServiceLocator.LayerdArchitectureExample
             //主动创建对象
             var logicController = Architecture.LogicLayer.GetModule<ILoginController>();
             var userInputManager = Architecture.LogicLayer.GetModule<IUserInputManager>();
+
+            //业务模块层配置
+            Architecture.BusinessModuleLayer = new BusinessModuleLayer();
+
+            var accountSystem = Architecture.BusinessModuleLayer.GetModule<IAccountSystem>();
+            var missionSystem = Architecture.BusinessModuleLayer.GetModule<IMissionSystem>();
+
         }
 
     }

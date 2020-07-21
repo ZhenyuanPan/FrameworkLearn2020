@@ -15,6 +15,8 @@ namespace FrameworkDesign2021.ServiceLocator.LayerdArchitectureExample
         public void OnInput(KeyCode keyCode)
         {
             Debug.Log("输入了:"+ keyCode);
+            var missionSystem = ArchitectureConfig.Architecture.BusinessModuleLayer.GetModule<IMissionSystem>();
+            missionSystem.OnEvent("JUMP");
         }
     }
 }

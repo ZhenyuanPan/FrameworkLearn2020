@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/LayerdArchitectureExample.unity
+- path: Assets/FrameworkDesign2021/3.Singleton/Example/MonoSingleton.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

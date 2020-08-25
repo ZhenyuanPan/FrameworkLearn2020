@@ -23,7 +23,6 @@ namespace FrameworkDesign2021.ServiceLocator.LayerdArchitectureExample
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
                 mUserInputManager.OnInput(KeyCode.Space);
             }
         }

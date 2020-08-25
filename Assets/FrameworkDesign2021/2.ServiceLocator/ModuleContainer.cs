@@ -61,7 +61,7 @@ namespace FrameworkDesign2021
             //回收对象
             moduleSearchKeys.Release2Pool();
 
-            //这步是从object => T 是逆变。但是IEnumerable<out t> out修饰参数 只支持协变
+            //这步是从ie<object> => ie<T> 是逆变。但是IEnumerable<out t> out修饰参数 只支持协变 这么写编译通过但是执行会抛出异常
             //return modules as IEnumerable<T>;
             return modules.Select(m => m as T);//改进部分
         }
